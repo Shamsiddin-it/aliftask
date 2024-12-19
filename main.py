@@ -16,8 +16,27 @@ def action_do(inp):
             updated = res.replace(ch, nev)
             with open(file, 'w') as new:
                 new.write(updated)
+        case 'del':
+            with open(file, 'r') as fle:
+                res = fle.read()
+            choosed = input("enter data you want to delete-> ")
+            updated = res.replace(choosed, '')
+            with open(file, 'w') as new:
+                new.write(updated)
+        case "sum":
+            with open(file, 'r') as new:
+                res = new.readlines()
+                mylist = []
+            for i in res:
+                mylist.append(i.split('-'))
+            sum = 0
+            for j in mylist:
+                   sum+=int(j[1])
+            print(sum)
 
-
-inp = [i for i in input().split()]
-action_do(inp)
+while True:
+    inp = [i for i in input("Enter name of file and action, if you want to quit programm write break: ").split()]
+    if inp==['break']:
+        break
+    action_do(inp)
 
